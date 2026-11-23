@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elvira | My Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f5f5f7;
+    color: #252525;
+}
+
+/* NAVIGATION */
+header {
+    padding: 25px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245,245,247,0.95);
+    backdrop-filter: blur(12px);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #725ac1;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #555;
+}
+
+.nav-btn:hover {
+    background: #e7e0fa;
+    color: #725ac1;
+    transform: scale(1.08);
+}
+
+.nav-btn.active {
+    background: #725ac1;
+    color: white;
+    transform: scale(1.15);
+    font-weight: bold;
+}
+
+/* PAGE SYSTEM */
+main {
+    min-height: 75vh;
+}
+
+.page {
+    display: none;
+    padding: 60px 10%;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HOME */
+.home-content {
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.home-text {
+    max-width: 550px;
+}
+
+.subtitle {
+    color: #725ac1;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.home-text h1 {
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.home-text h1 span {
+    color: #725ac1;
+}
+
+.home-text h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.home-text p {
+    line-height: 1.8;
+    color: #666;
+}
+
+.home-image img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 10px 10px 0 #d8cff5;
+}
+
+.main-btn {
+    margin-top: 25px;
+    padding: 13px 25px;
+    background: #725ac1;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-4px);
+    background: #57419f;
+}
+
+/* SECTION TITLE */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title p {
+    color: #725ac1;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.section-title h1 {
+    font-size: 38px;
+    margin-top: 10px;
+}
+
+/* ABOUT */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image img {
+    width: 280px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.about-text {
+    line-height: 1.8;
+}
+
+.about-text h2 {
+    color: #725ac1;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.personal-info {
+    margin-top: 20px;
+}
+
+/* GALLERY */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    height: 280px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    width: 100%;
+    padding: 25px 15px 15px;
+}
+
+/* PROJECTS */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card h2 {
+    color: #725ac1;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #777;
+    line-height: 1.7;
+}
+
+/* CERTIFICATES */
+.certificate-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.certificate-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.certificate-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.certificate-card h3 {
+    color: #725ac1;
+    margin-bottom: 8px;
+}
+
+.certificate-card p {
+    color: #777;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+    header {
+        padding: 20px 4%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .home-content,
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gallery-container,
+    .project-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .page {
+        padding: 40px 6%;
+    }
+
+    .home-text h1 {
+        font-size: 35px;
+    }
+
+    .gallery-container,
+    .project-container,
+    .certificate-container {
+        grid-template-columns: 1fr;
+    }
+
+    .home-image img {
+        width: 240px;
+        height: 280px;
+    }
+
+    .nav-links {
+        gap: 5px;
+    }
+
+    .nav-btn {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <nav class="navbar">
+        <div class="logo">Elvira.</div>
+
+        <ul class="nav-links">
+            <li><button class="nav-btn active" data-page="home">Home</button></li>
+            <li><button class="nav-btn" data-page="about">About Me</button></li>
+            <li><button class="nav-btn" data-page="gallery">Gallery</button></li>
+            <li><button class="nav-btn" data-page="projects">Projects</button></li>
+            <li><button class="nav-btn" data-page="certificates">Certificates</button></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+        <div class="home-content">
+
+            <div class="home-text">
+                <p class="subtitle">WELCOME TO MY PORTFOLIO</p>
+
+                <h1>Hello, I'm <span>Elvira</span></h1>
+
+                <h2>Student | Creative Learner</h2>
+
+                <p>
+                    Welcome to my personal portfolio website.
+                    Here you can explore my profile, activities,
+                    projects, and achievements.
+                </p>
+
+                <button class="main-btn" data-target="about">
+                    Discover More
+                </button>
+            </div>
+
+            <div class="home-image">
+                <img src="images/profile.jpg" alt="My Profile">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT ME PAGE -->
+    <section id="about" class="page">
+
+        <div class="section-title">
+            <p>GET TO KNOW ME</p>
+            <h1>About Me</h1>
+        </div>
+
+        <div class="about-content">
+
+            <div class="about-image">
+                <img src="images/profile.jpg" alt="About Me">
+            </div>
+
+            <div class="about-text">
+
+                <h2>Who Am I?</h2>
+
+                <p>
+                    Hello! My name is Elvira. I am a student
+                    who is interested in technology, creativity,
+                    and learning new things.
+                </p>
+
+                <p>
+                    I enjoy exploring new experiences, developing
+                    my skills, and working on creative projects.
+                    This portfolio is a collection of my journey
+                    and achievements.
+                </p>
+
+                <div class="personal-info">
+                    <p><strong>Name:</strong> Elvira</p>
+                    <p><strong>Age:</strong> Your Age</p>
+                    <p><strong>Education:</strong> Your School</p>
+                    <p><strong>Interest:</strong> Design & Technology</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY PAGE -->
+    <section id="gallery" class="page">
+
+        <div class="section-title">
+            <p>MY MEMORIES</p>
+            <h1>My Gallery</h1>
+        </div>
+
+        <div class="gallery-container">
+
+            <div class="gallery-item">
+                <img src="images/gallery1.jpg" alt="Gallery 1">
+                <div class="gallery-caption">My Activities</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/gallery2.jpg" alt="Gallery 2">
+                <div class="gallery-caption">My Experiences</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/gallery3.jpg" alt="Gallery 3">
+                <div class="gallery-caption">My Memories</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS PAGE -->
+    <section id="projects" class="page">
+
+        <div class="section-title">
+            <p>WHAT I HAVE DONE</p>
+            <h1>My Projects</h1>
+        </div>
+
+        <div class="project-container">
+
+            <div class="project-card">
+                <h2>Project 01</h2>
+                <p>My first creative or technology project.</p>
+            </div>
+
+            <div class="project-card">
+                <h2>Project 02</h2>
+                <p>A project that helped me develop new skills.</p>
+            </div>
+
+            <div class="project-card">
+                <h2>Project 03</h2>
+                <p>Another project from my learning journey.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CERTIFICATES PAGE -->
+    <section id="certificates" class="page">
+
+        <div class="section-title">
+            <p>MY ACHIEVEMENTS</p>
+            <h1>Certificates</h1>
+        </div>
+
+        <div class="certificate-container">
+
+            <div class="certificate-card">
+                <img src="images/certificate1.jpg" alt="Certificate 1">
+                <h3>Certificate Title 01</h3>
+                <p>Issued by: Organization Name</p>
+            </div>
+
+            <div class="certificate-card">
+                <img src="images/certificate2.jpg" alt="Certificate 2">
+                <h3>Certificate Title 02</h3>
+                <p>Issued by: Organization Name</p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Elvira | My Personal Portfolio</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// SELECT ELEMENTS
+const navButtons = document.querySelectorAll(".nav-btn");
+const pages = document.querySelectorAll(".page");
+const targetButtons = document.querySelectorAll(".main-btn");
+
+// FUNCTION TO CHANGE PAGE
+function showPage(pageId) {
+
+    // Hide all pages
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    // Remove active navigation
+    navButtons.forEach(button => {
+        button.classList.remove("active");
+    });
+
+    // Show selected page
+    const selectedPage = document.getElementById(pageId);
+
+    if (!selectedPage) return;
+
+    selectedPage.classList.add("active");
+
+    // Activate selected navigation
+    navButtons.forEach(button => {
+        if (button.dataset.page === pageId) {
+            button.classList.add("active");
+        }
+    });
+
+    // Scroll to top
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// NAVIGATION CLICK EVENT
+navButtons.forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        const pageId = this.dataset.page;
+
+        showPage(pageId);
+
+    });
+
+});
+
+// BUTTON CLICK EVENT
+targetButtons.forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        const pageId = this.dataset.target;
+
+        showPage(pageId);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
