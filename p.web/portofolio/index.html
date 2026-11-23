@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f5f3fa;color:#333}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:white;position:sticky;top:0}
+.logo{color:#7656bd;font-size:22px;font-weight:bold}
+nav ul{display:flex;gap:12px;list-style:none}
+nav button{border:0;padding:10px 14px;border-radius:20px;background:transparent;cursor:pointer;transition:.3s}
+nav button:hover{transform:scale(1.1);background:#eee8fa}
+nav button.active{background:#7656bd;color:white;transform:scale(1.15)}
+.page{display:none;padding:70px 10%;min-height:75vh;animation:fade .4s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+h1{color:#7656bd;margin-bottom:20px}
+p{line-height:1.8;color:#666;margin-bottom:15px}
+.home{display:flex;align-items:center;justify-content:space-between;gap:30px}
+img{object-fit:cover;border-radius:15px;max-width:100%}
+.profile{width:260px;height:300px}
+.gallery,.certificates,.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery img,.certificates img{width:100%;height:190px}
+.card{background:white;padding:20px;border-radius:15px}
+footer{text-align:center;padding:20px;color:#888}
+@media(max-width:650px){
+nav{flex-direction:column;gap:15px}
+nav ul{flex-wrap:wrap;justify-content:center}
+.home{flex-direction:column;text-align:center}
+.gallery,.certificates,.projects{grid-template-columns:1fr}
+.page{padding:40px 6%}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">MyPortfolio.</div>
+<ul>
+<li><button class="active" onclick="showPage('home',this)">Home</button></li>
+<li><button onclick="showPage('about',this)">About</button></li>
+<li><button onclick="showPage('gallery',this)">Gallery</button></li>
+<li><button onclick="showPage('projects',this)">Projects</button></li>
+<li><button onclick="showPage('certificates',this)">Certificates</button></li>
+</ul>
+</nav>
+
+<section id="home" class="page active">
+<div class="home">
+<div>
+<p>WELCOME TO MY PORTFOLIO</p>
+<h1>Hello, I'm Your Name</h1>
+<p>Student | Creative Learner</p>
+<p>Welcome to my personal portfolio website!</p>
+</div>
+<img class="profile" src="images/profile.jpg">
+</div>
+</section>
+
+<section id="about" class="page">
+<h1>About Me</h1>
+<img class="profile" src="images/profile.jpg">
+<p>Hello! My name is Your Name. I am a student interested in technology, creativity, and learning new things.</p>
+<p>Education: Your School</p>
+<p>Hobbies: Design, Technology, Photography</p>
+</section>
+
+<section id="gallery" class="page">
+<h1>My Gallery</h1>
+<div class="gallery">
+<img src="images/gallery1.jpg">
+<img src="images/gallery2.jpg">
+<img src="images/gallery3.jpg">
+</div>
+</section>
+
+<section id="projects" class="page">
+<h1>My Projects</h1>
+<div class="projects">
+<div class="card"><h3>Project 01</h3><p>My first project.</p></div>
+<div class="card"><h3>Project 02</h3><p>My second project.</p></div>
+<div class="card"><h3>Project 03</h3><p>My third project.</p></div>
+</div>
+</section>
+
+<section id="certificates" class="page">
+<h1>My Certificates</h1>
+<div class="certificates">
+<div class="card"><img src="images/certificate1.jpg"><p>Certificate 01</p></div>
+<div class="card"><img src="images/certificate2.jpg"><p>Certificate 02</p></div>
+<div class="card"><img src="images/certificate3.jpg"><p>Certificate 03</p></div>
+</div>
+</section>
+
+<footer>© 2026 Your Name | My Portfolio</footer>
+
+<script>
+function showPage(id,button){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+button.classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
